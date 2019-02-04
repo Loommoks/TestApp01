@@ -1,5 +1,8 @@
 package su.zencode.testapp01;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public interface ImvpContract {
 
     interface Model {
@@ -10,10 +13,12 @@ public interface ImvpContract {
 
     interface View {
         void showTransfer(String input);
+        ArrayList<String> getDataToTransfer();
     }
 
     interface Presenter {
-        void onButtonWasClicked();
+        void onSaveTxtButtonClicked();
+        void onSaveDbButtonClicked();
         void onDestroy();
     }
 }

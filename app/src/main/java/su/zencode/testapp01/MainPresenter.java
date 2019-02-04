@@ -1,5 +1,8 @@
 package su.zencode.testapp01;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class MainPresenter implements ImvpContract.Presenter {
 
     private static final String TAG = ".MainPresenter";
@@ -7,7 +10,7 @@ public class MainPresenter implements ImvpContract.Presenter {
     private ImvpContract.View mView;
     private ImvpContract.Model mModel;
 
-    private String message;
+    private ArrayList<String> transferData;
 
     public MainPresenter(ImvpContract.View mView) {
         this.mView = mView;
@@ -15,10 +18,21 @@ public class MainPresenter implements ImvpContract.Presenter {
     }
 
     @Override
-    public void onButtonWasClicked() {
-        message = mModel.loadMessage();
-        mView.showTransfer(message);
-        /** Реакция на кнопку будет тут. */
+    public void onSaveTxtButtonClicked() {
+        //transferData = mModel.loadMessage();
+        transferData = mView.getDataToTransfer();
+        /*String debugTransferData;
+        for (int i = 0; i < transferData.size(); i++) {
+            mView.showTransfer(transferData.get(i));
+        }*/
+        mView.showTransfer(TxtDataHelper.convertListToString(transferData));
+        /** Реакция на кнопку saveTXT тут. */
+
+    }
+
+    @Override
+    public void onSaveDbButtonClicked() {
+        /** Реакция на кнопку saveDb тут. */
 
     }
 
