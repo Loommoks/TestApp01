@@ -26,7 +26,11 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        
+        mPresenter = new MainPresenter(this);
+
+
+
+
     }
 
     @Override

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TestApp01</string>
     <string name="default_string">BestApp String</string>
+    <string name="nameEditTextHint">Имя</string>
+    <string name="patroEditTextHint">Отчество</string>
+    <string name="surnameEditTextHint">фамилия</string>
+    <string name="saveClientButtonLabel">SAVE.TXT</string>
+    <string name="saveDbButtonLabel">SAVE.DB</string>
 </resources>
