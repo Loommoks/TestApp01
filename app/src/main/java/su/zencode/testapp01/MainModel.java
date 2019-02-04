@@ -9,17 +9,21 @@ public class MainModel implements ImvpContract.Model {
     @Override
     public void saveUserData() {
         Log.d(TAG,"saveUserData()");
+        /** Сохранять данные ФИО будем здесь. */
+
     }
 
     @Override
     public String loadData() {
         Log.d(TAG,"loadData()");
+        /** Загружать и вызывать парсинг с .тхт будем тут. */
         return null;
     }
 
     @Override
     public String loadMessage() {
         Log.d(TAG,"loadMessage()");
-        return null;
+        /** Работать с .тхт или БД будем тут. */
+        return "Default loadMessage() string";
     }
 }

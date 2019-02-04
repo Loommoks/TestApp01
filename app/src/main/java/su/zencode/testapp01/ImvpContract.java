@@ -9,7 +9,7 @@ public interface ImvpContract {
     }
 
     interface View {
-        void showText();
+        void showTransfer(String input);
     }
 
     interface Presenter {
