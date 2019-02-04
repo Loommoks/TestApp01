@@ -1,7 +1,6 @@
 package su.zencode.testapp01;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class MainPresenter implements ImvpContract.Presenter {
 
@@ -25,7 +24,9 @@ public class MainPresenter implements ImvpContract.Presenter {
         for (int i = 0; i < transferData.size(); i++) {
             mView.showTransfer(transferData.get(i));
         }*/
-        mView.showTransfer(TxtDataHelper.convertListToString(transferData));
+        String stringTranferData = TxtDataHelper.convertListToString(transferData);
+        mView.showTransfer(stringTranferData);
+        //mView.printTransfer(TxtDataHelper.convertStringToList(stringTranferData).toString());
         /** Реакция на кнопку saveTXT тут. */
 
     }

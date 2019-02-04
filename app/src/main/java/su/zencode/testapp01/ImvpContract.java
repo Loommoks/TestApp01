@@ -13,6 +13,7 @@ public interface ImvpContract {
 
     interface View {
         void showTransfer(String input);
+        void printTransfer(String input);
         ArrayList<String> getDataToTransfer();
     }
 

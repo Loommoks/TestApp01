@@ -19,4 +19,16 @@ public class TxtDataHelper {
         return sbString.toString();
     }
 
+    public static ArrayList<String> convertStringToList (String input) {
+        ArrayList<String> output = new ArrayList<>();
+
+        String[] separated = input.split(";");
+
+        for (int i = 0; i < separated.length; i++) {
+            output.add(separated[i]);
+        }
+
+        return output;
+    }
+
 }
