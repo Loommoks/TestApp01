@@ -20,7 +20,6 @@ public class UserDataHelper {
     private Context mContext;
     private SQLiteOpenHelper mSQLiteOpenHelper;
 
-    private ArrayList<UserData> mUsers;
 
     public UserDataHelper(Context context) {
         this.mContext = context;
@@ -55,7 +54,6 @@ public class UserDataHelper {
             int charRead;
 
             while ((charRead=inputReader.read(inputBuffer))>0) {
-                // char to string conversion
                 String readstring=String.copyValueOf(inputBuffer,0,charRead);
                 s +=readstring;
             }
@@ -69,6 +67,7 @@ public class UserDataHelper {
         return user;
     }
 
+    /**
     public static String convertListToString (ArrayList<String> input) {
 
         //String output = String.join(";",input);
@@ -83,6 +82,7 @@ public class UserDataHelper {
 
         return sbString.toString();
     }
+     */
 
     public static ArrayList<String> convertStringToList (String input) {
         ArrayList<String> output = new ArrayList<>();
@@ -111,8 +111,7 @@ public class UserDataHelper {
 
     public ArrayList<String> getTable() {
         ArrayList<String> result = new ArrayList<>();
-        //String result = "error";
-        //SQLiteOpenHelper sqLiteOpenHelper = new TestAppDatabaseHelper(mContext);
+
         try {
             SQLiteDatabase db = mSQLiteOpenHelper.getReadableDatabase();
             Cursor cursor = db.query("CLIENTS",

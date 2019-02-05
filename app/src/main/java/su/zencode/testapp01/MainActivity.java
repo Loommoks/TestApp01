@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
 
     @Override
     public void showTransfer(String input) {
-        //mDebugTextView.setText(input);
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
         Log.d(TAG,"showTransfer()");
     }
