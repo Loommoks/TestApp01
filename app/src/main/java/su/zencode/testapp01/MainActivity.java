@@ -1,5 +1,6 @@
 package su.zencode.testapp01;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -71,6 +77,11 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
     }
 
     @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
     public ArrayList<String> getDataToTransfer() {
         //ToDo должно быть в локальной реализации View<->Presenter
         ArrayList<String> output = new ArrayList<>();
@@ -79,4 +90,5 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
         output.add(mSurnameEditText.getText().toString());
         return output;
     }
+
 }

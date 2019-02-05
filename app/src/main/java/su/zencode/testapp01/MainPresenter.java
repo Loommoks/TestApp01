@@ -1,5 +1,8 @@
 package su.zencode.testapp01;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class MainPresenter implements ImvpContract.Presenter {
@@ -18,21 +21,21 @@ public class MainPresenter implements ImvpContract.Presenter {
 
     @Override
     public void onSaveTxtButtonClicked() {
-        //transferData = mModel.loadMessage();
         transferData = mView.getDataToTransfer();
-        /*String debugTransferData;
-        for (int i = 0; i < transferData.size(); i++) {
-            mView.showTransfer(transferData.get(i));
-        }*/
         String stringTranferData = TxtDataHelper.convertListToString(transferData);
-        mView.showTransfer(stringTranferData);
-        //mView.printTransfer(TxtDataHelper.convertStringToList(stringTranferData).toString());
+        Context context = mView.getContext();
+        mModel.saveTxtUserData(context,stringTranferData);
+        Log.d(TAG,"onSaveTxtButtonClicked()");
         /** Реакция на кнопку saveTXT тут. */
 
     }
 
     @Override
     public void onSaveDbButtonClicked() {
+        Context context = mView.getContext();
+        String result = mModel.loadTxtUserData(context);
+        mView.showTransfer(result);
+        Log.d(TAG,"onSaveDbButtonClicked()");
         /** Реакция на кнопку saveDb тут. */
 
     }
