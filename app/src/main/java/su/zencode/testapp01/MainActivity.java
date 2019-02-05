@@ -72,17 +72,12 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
     }
 
     @Override
-    public void printTransfer(String input) {
-        mDebugTextView.setText(input);
-    }
-
-    @Override
     public Context getContext() {
         return this;
     }
 
     @Override
-    public ArrayList<String> getDataToTransfer() {
+    public ArrayList<String> getUserData() {
         //ToDo должно быть в локальной реализации View<->Presenter
         ArrayList<String> output = new ArrayList<>();
         output.add(mNameEditText.getText().toString());

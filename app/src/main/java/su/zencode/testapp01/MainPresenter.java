@@ -10,21 +10,23 @@ public class MainPresenter implements ImvpContract.Presenter {
     private static final String TAG = ".MainPresenter";
 
     private ImvpContract.View mView;
-    private ImvpContract.Model mModel;
+    private UserDataHelper mUserDataHelper;
 
     private ArrayList<String> transferData;
 
     public MainPresenter(ImvpContract.View mView) {
         this.mView = mView;
-        this.mModel = new MainModel();
+        mUserDataHelper = new UserDataHelper(mView.getContext());
     }
 
     @Override
     public void onSaveTxtButtonClicked() {
-        transferData = mView.getDataToTransfer();
-        String stringTranferData = TxtDataHelper.convertListToString(transferData);
+        transferData = mView.getUserData();
+        //String stringTranferData = UserDataHelper.convertListToString(transferData);
         Context context = mView.getContext();
-        mModel.saveTxtUserData(context,stringTranferData);
+        UserData newUser = mUserDataHelper.generateUser(transferData);
+        mUserDataHelper.saveUserToTxt(newUser);
+        //mModel.saveTxtUserData(context,stringTranferData);
         Log.d(TAG,"onSaveTxtButtonClicked()");
         /** Реакция на кнопку saveTXT тут. */
 
@@ -32,8 +34,9 @@ public class MainPresenter implements ImvpContract.Presenter {
 
     @Override
     public void onSaveDbButtonClicked() {
-        Context context = mView.getContext();
-        String result = mModel.loadTxtUserData(context);
+        //ToDo Пока заглушка для проверки записи в файл
+        UserData userData = mUserDataHelper.loadUserFromTxt();
+        String result = mUserDataHelper.userToStringConverter(userData);
         mView.showTransfer(result);
         Log.d(TAG,"onSaveDbButtonClicked()");
         /** Реакция на кнопку saveDb тут. */
