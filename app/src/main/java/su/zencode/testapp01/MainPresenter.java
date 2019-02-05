@@ -10,7 +10,7 @@ public class MainPresenter implements ImvpContract.Presenter {
 
     private ImvpContract.View mView;
     private UserDataHelper mUserDataHelper;
-    
+
     public MainPresenter(ImvpContract.View mView) {
         this.mView = mView;
         mUserDataHelper = new UserDataHelper(mView.getContext());
