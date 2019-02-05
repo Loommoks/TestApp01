@@ -15,6 +15,7 @@ public interface ImvpContract {
     interface Presenter {
         void onSaveTxtButtonClicked();
         void onSaveDbButtonClicked();
+        void updateDebugView(String data);
         void onDestroy();
     }
 }

@@ -1,6 +1,10 @@
 package su.zencode.testapp01;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -14,11 +18,13 @@ public class UserDataHelper {
     private final static String FILE_NAME = "test.txt";
 
     private Context mContext;
+    private SQLiteOpenHelper mSQLiteOpenHelper;
 
     private ArrayList<UserData> mUsers;
 
     public UserDataHelper(Context context) {
         this.mContext = context;
+        mSQLiteOpenHelper = new TestAppDatabaseHelper(mContext);
     }
 
 
@@ -100,6 +106,39 @@ public class UserDataHelper {
 
     public String userToStringConverter(UserData user) {
         String result = user.getName() + ";" + user.getPatro()+ ";" + user.getSurname();
+        return result;
+    }
+
+    public ArrayList<String> getTable() {
+        ArrayList<String> result = new ArrayList<>();
+        //String result = "error";
+        SQLiteOpenHelper sqLiteOpenHelper = new TestAppDatabaseHelper(mContext);
+        try {
+            SQLiteDatabase db = sqLiteOpenHelper.getReadableDatabase();
+            Cursor cursor = db.query("CLIENTS",
+                    new String[] {"_id","SURNAME","NAME"},
+                    null,null,null,null,null);
+
+            if(cursor.moveToFirst()) {
+                /** Получаем данные клиента из курсора*/
+                int clientId = cursor.getInt(0);
+                String clientSurname = cursor.getString(1);
+                String clientName = cursor.getString(2);
+                result.add(Integer.toString(clientId)+ ";" + clientSurname+ ";" +clientName+"\n");
+
+            }
+            while (cursor.moveToNext()) {
+                int clientId = cursor.getInt(0);
+                String clientSurname = cursor.getString(1);
+                String clientName = cursor.getString(2);
+                result.add(Integer.toString(clientId)+ ";" + clientSurname+ ";" +clientName+"\n");
+            }
+            cursor.close();
+            db.close();
+        } catch (SQLException e) {
+            Toast toast = Toast.makeText(mContext,"Database unavailable",Toast.LENGTH_SHORT);
+            toast.show();
+        }
         return result;
     }
 
