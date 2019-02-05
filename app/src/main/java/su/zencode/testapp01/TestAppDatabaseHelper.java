@@ -21,8 +21,6 @@ public class TestAppDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE CLIENTS (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "SURNAME TEXT, "
                 + "NAME TEXT);");
-        insertClient(db, "VASILEV", "VASA");
-        insertClient(db, "Pavlov","Pavel");
     }
 
     @Override
@@ -30,7 +28,7 @@ public class TestAppDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    private static void insertClient(SQLiteDatabase db, String surname,
+    public static void insertClient(SQLiteDatabase db, String surname,
                                      String name) {
         ContentValues clientValues = new ContentValues();
         clientValues.put("SURNAME", surname);

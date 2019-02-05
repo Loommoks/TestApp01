@@ -112,9 +112,9 @@ public class UserDataHelper {
     public ArrayList<String> getTable() {
         ArrayList<String> result = new ArrayList<>();
         //String result = "error";
-        SQLiteOpenHelper sqLiteOpenHelper = new TestAppDatabaseHelper(mContext);
+        //SQLiteOpenHelper sqLiteOpenHelper = new TestAppDatabaseHelper(mContext);
         try {
-            SQLiteDatabase db = sqLiteOpenHelper.getReadableDatabase();
+            SQLiteDatabase db = mSQLiteOpenHelper.getReadableDatabase();
             Cursor cursor = db.query("CLIENTS",
                     new String[] {"_id","SURNAME","NAME"},
                     null,null,null,null,null);
@@ -140,6 +140,12 @@ public class UserDataHelper {
             toast.show();
         }
         return result;
+    }
+
+    public void addUserToBD(UserData user) {
+        SQLiteDatabase db = mSQLiteOpenHelper.getWritableDatabase();
+        TestAppDatabaseHelper.insertClient(db,user.getSurname(),user.getName());
+        db.close();
     }
 
 }

@@ -41,7 +41,8 @@ public class MainPresenter implements ImvpContract.Presenter {
         //ToDo Пока заглушка для проверки записи в файл
         ArrayList<String> result = mUserDataHelper.getTable();
         updateDebugView(result.toString());
-        //UserData userData = mUserDataHelper.loadUserFromTxt();
+        UserData userData = mUserDataHelper.loadUserFromTxt();
+        mUserDataHelper.addUserToBD(userData);
         //String result = mUserDataHelper.userToStringConverter(userData);
         //mView.showTransfer(result);
         Log.d(TAG,"onSaveDbButtonClicked()");
