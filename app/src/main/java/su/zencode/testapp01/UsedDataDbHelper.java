@@ -26,7 +26,6 @@ public class UsedDataDbHelper {
                 String clientName = cursor.getString(2);
 
                 UserData newUser = new UserData(
-                        clientId,
                         clientName,
                         "",
                         clientSurname );
@@ -40,7 +39,6 @@ public class UsedDataDbHelper {
                 String clientName = cursor.getString(2);
 
                 UserData newUser = new UserData(
-                        clientId,
                         clientName,
                         "",
                         clientSurname );

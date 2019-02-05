@@ -1,20 +1,11 @@
 package su.zencode.testapp01;
 
 public class UserData {
-    private int usedId;
     private String name;
     private String patro;
     private String surname;
 
     public UserData(String name, String patro, String surname) {
-        this.usedId = -1;
-        this.name = name;
-        this.patro = patro;
-        this.surname = surname;
-    }
-
-    public UserData(int usedId, String name, String patro, String surname) {
-        this.usedId = usedId;
         this.name = name;
         this.patro = patro;
         this.surname = surname;
@@ -44,6 +35,7 @@ public class UserData {
         return surname;
     }
 
+    /**
     public void setUsedId(int usedId) {
         this.usedId = usedId;
     }
@@ -58,5 +50,5 @@ public class UserData {
                 + patro + ";"
                 + surname;
         return result;
-    }
+    }*/
 }

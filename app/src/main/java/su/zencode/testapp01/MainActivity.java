@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
     private Button mSaveTxtButton;
     private Button mSaveDbButton;
 
-    private TextView mDebugTextView;
     private EditText mNameEditText;
     private EditText mSurnameEditText;
     private EditText mPatroEditText;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
 
         mPresenter = new MainPresenter(this);
 
-        mDebugTextView = findViewById(R.id.debugTextView);
         mNameEditText = findViewById(R.id.nameEditText);
         mPatroEditText = findViewById(R.id.patroEditText);
         mSurnameEditText = findViewById(R.id.surnameEditText);

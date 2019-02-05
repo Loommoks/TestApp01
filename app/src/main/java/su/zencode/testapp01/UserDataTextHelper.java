@@ -1,7 +1,6 @@
 package su.zencode.testapp01;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,7 +10,9 @@ import java.util.ArrayList;
 
 public class UserDataTextHelper {
 
-    public static void saveUserToTxt(Context context, String fileName, UserData user) {
+    public static boolean saveUserToTxt(Context context, String fileName, UserData user) {
+
+        boolean operationComplete = false;
 
         try {
             FileOutputStream fos = context.getApplicationContext().openFileOutput(fileName,context.MODE_PRIVATE);
@@ -19,15 +20,17 @@ public class UserDataTextHelper {
             String userDataString = userToStringConverter(user);
             outputWriter.write(userDataString);
             outputWriter.close();
-            Toast.makeText(context, "File saved", Toast.LENGTH_SHORT).show();
+            operationComplete = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return operationComplete;
     }
 
     public static UserData loadUserFromTxt(Context context, String fileName) {
         /** Делегировать */
+        UserData user = null;
         String s=null;
 
         try {
@@ -48,11 +51,13 @@ public class UserDataTextHelper {
             e.printStackTrace();
         }
         ArrayList<String> userDataList = convertStringToList(s);
-        UserData user = new UserData(
-                userDataList.get(0).toString(),
-                userDataList.get(1).toString(),
-                userDataList.get(2).toString()
-        );
+        if (userDataList!=null) {
+            user = new UserData(
+                    userDataList.get(0).toString(),
+                    userDataList.get(1).toString(),
+                    userDataList.get(2).toString()
+            );
+        }
         return user;
     }
 
@@ -62,12 +67,17 @@ public class UserDataTextHelper {
     }
 
     public static ArrayList<String> convertStringToList (String input) {
+
         ArrayList<String> output = new ArrayList<>();
 
-        String[] separated = input.split(";");
+        String[] separated = input.split(";",-1);
 
-        for (int i = 0; i < separated.length; i++) {
-            output.add(separated[i]);
+        if (separated.length == 3) {
+            for (int i = 0; i < separated.length; i++) {
+                output.add(separated[i]);
+            }
+        } else {
+            output = null;
         }
 
         return output;

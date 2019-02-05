@@ -32,7 +32,7 @@ public class MainPresenter implements ImvpContract.Presenter {
     public void onSaveDbButtonClicked() {
 
         UserData userData = mUserDataHelper.loadUserFromTxt();
-        mUserDataHelper.addUserToBD(userData);
+        if (userData!=null) mUserDataHelper.addUserToBD(userData);
 
         List<UserData> result = mUserDataHelper.getTable();
         updateDebugView(result.toString());
