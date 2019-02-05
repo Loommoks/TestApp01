@@ -10,6 +10,9 @@ public interface ImvpContract {
         void showTransfer(String input);
         Context getContext();
         ArrayList<String> getUserData();
+        String getUserName();
+        String getUserPatro();
+        String getUserSurname();
     }
 
     interface Presenter {

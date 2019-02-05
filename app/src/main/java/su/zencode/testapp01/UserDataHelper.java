@@ -63,26 +63,13 @@ public class UserDataHelper {
             e.printStackTrace();
         }
         ArrayList<String> userDataList = convertStringToList(s);
-        UserData user = generateUser(userDataList);
+        UserData user = new UserData(
+                userDataList.get(0).toString(),
+                userDataList.get(1).toString(),
+                userDataList.get(2).toString()
+        );
         return user;
     }
-
-    /**
-    public static String convertListToString (ArrayList<String> input) {
-
-        //String output = String.join(";",input);
-        StringBuilder sbString = new StringBuilder();
-        String separator = ";";
-
-        for (int i = 0; i < input.size(); i++) {
-            sbString.append(input.get(i));
-            if (i != input.size() - 1)
-                sbString.append(separator);
-        }
-
-        return sbString.toString();
-    }
-     */
 
     public static ArrayList<String> convertStringToList (String input) {
         ArrayList<String> output = new ArrayList<>();
@@ -96,13 +83,13 @@ public class UserDataHelper {
         return output;
     }
 
-    public UserData generateUser(ArrayList<String> userData) {
+    /*public UserData generateUser(ArrayList<String> userData) {
         UserData user = null;
         if (userData.size() == 3) {
             user = new UserData(userData.get(0),userData.get(1),userData.get(2));
         } else Toast.makeText(mContext,"incorrect data",Toast.LENGTH_SHORT).show();
         return user;
-    }
+    }*/
 
     public String userToStringConverter(UserData user) {
         String result = user.getName() + ";" + user.getPatro()+ ";" + user.getSurname();

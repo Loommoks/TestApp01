@@ -85,4 +85,19 @@ public class MainActivity extends AppCompatActivity implements ImvpContract.View
         return output;
     }
 
+    @Override
+    public String getUserName() {
+        return mNameEditText.getText().toString();
+    }
+
+    @Override
+    public String getUserPatro() {
+        return mPatroEditText.getText().toString();
+    }
+
+    @Override
+    public String getUserSurname() {
+        return mSurnameEditText.getText().toString();
+    }
+
 }
