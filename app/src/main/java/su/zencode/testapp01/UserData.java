@@ -35,20 +35,5 @@ public class UserData {
         return surname;
     }
 
-    /**
-    public void setUsedId(int usedId) {
-        this.usedId = usedId;
-    }
 
-    public int getUsedId() {
-        return usedId;
-    }
-
-    public String toString() {
-        String result = Integer.toString(usedId) + ";"
-                + name + ";"
-                + patro + ";"
-                + surname;
-        return result;
-    }*/
 }

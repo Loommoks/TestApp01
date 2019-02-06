@@ -29,7 +29,7 @@ public class UserDataTextHelper {
     }
 
     public static UserData loadUserFromTxt(Context context, String fileName) {
-        /** Делегировать */
+
         UserData user = null;
         String s=null;
 
@@ -68,16 +68,19 @@ public class UserDataTextHelper {
 
     public static ArrayList<String> convertStringToList (String input) {
 
-        ArrayList<String> output = new ArrayList<>();
+        ArrayList<String> output = null;
 
-        String[] separated = input.split(";",-1);
+        if(input != null) {
 
-        if (separated.length == 3) {
-            for (int i = 0; i < separated.length; i++) {
-                output.add(separated[i]);
+            String[] separated = input.split(";", -1);
+
+            if (separated.length == 3) {
+                output = new ArrayList<>();
+
+                for (int i = 0; i < separated.length; i++) {
+                    output.add(separated[i]);
+                }
             }
-        } else {
-            output = null;
         }
 
         return output;

@@ -2,7 +2,6 @@ package su.zencode.testapp01;
 
 import android.util.Log;
 
-import java.util.List;
 
 public class MainPresenter implements ImvpContract.Presenter {
 
@@ -34,11 +33,7 @@ public class MainPresenter implements ImvpContract.Presenter {
         UserData userData = mUserDataHelper.loadUserFromTxt();
         if (userData!=null) mUserDataHelper.addUserToBD(userData);
 
-        List<UserData> result = mUserDataHelper.getTable();
-        updateDebugView(result.toString());
-
         Log.d(TAG,"onSaveDbButtonClicked()");
-
 
     }
 
